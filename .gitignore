@@ -1,0 +1,61 @@
+# Ignorar node_modules en client y server
+client/node_modules/
+server/node_modules/
+
+# Ignorar archivos de entorno
+.env
+*.env
+
+# Ignorar carpetas de compilación
+client/dist/
+server/dist/
+
+# Ignorar archivos de logs
+*.log
+
+# Ignorar archivos de configuración local
+*.local
+
+# Ignorar archivos de IDE
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Ignorar archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Compiled output (Angular)
+/client/dist
+/client/tmp
+/client/out-tsc
+/client/bazel-out
+
+# Node (general)
+npm-debug.log
+yarn-error.log
+
+# IDEs and editors (general)
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Miscellaneous (Angular)
+/client/.angular/cache
+/client/sass-cache/
+/client/connect.lock
+/client/coverage
+/client/libpeerconnection.log
+/client/testem.log
+/client/typings
+
+# System files (general)
+.DS_Store
+Thumbs.db
