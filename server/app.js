@@ -14,21 +14,12 @@ app.use(express.json()); // Para manejar JSON en las peticiones
 
 
 // Rutas
-app.use('/auth', authRoutes); // Rutas de autenticación (login, registro)
-app.use('/usuarios', userRoutes); // Rutas relacionadas con usuarios
+const authuserRoutes = require('./routes/authUsers');
+app.use('/auth', authuserRoutes); // Rutas de autenticación (login, registro)
 
-// Ruta de prueba
-app.get('/', (req, res) => {
-    res.send('API del Autolote');
-});
 
-// Manejo de errores global
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).json({ status: 500, message: 'Error del servidor' });
-});
 
 // Servidor en marcha
 app.listen(PORT, () => {
-    console.log(`✅ Servidor corriendo en http://localhost:${PORT}`);
+    console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
