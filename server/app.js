@@ -14,9 +14,8 @@ app.use(express.json()); // Para manejar JSON en las peticiones
 
 
 // Rutas
-const authuserRoutes = require('./routes/authUsers');
-app.use('/auth', authuserRoutes); // Rutas de autenticación (login, registro)
-
+const authUserRoutes = require('./routes/authUser');
+app.use('/api',authUserRoutes);
 
 
 // Servidor en marcha
