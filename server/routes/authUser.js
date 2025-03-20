@@ -8,18 +8,18 @@ require('dotenv').config();
 
 // Ruta para el registro de usuarios
 router.post('/registro', async (req, res) => {
-    const { nombre, correo, contraseña, rol } = req.body;
+    const { nombre, correo, contrasena, rol } = req.body;
 
     // Validación de datos de entrada
-    if (!nombre || !correo || !contraseña || !rol) {
+    if (!nombre || !correo || !contrasena || !rol) {
         return res.status(400).json({ status: 400, message: 'Todos los campos son requeridos' });
     }
 
     try {
         const saltRound = 10;
-        const passwordEncrypt = await bcrypt.hash(contraseña, saltRound);
+        const passwordEncrypt = await bcrypt.hash(contrasena, saltRound);
 
-        const sql = 'INSERT INTO usuarios (nombre, correo, contraseña, rol) VALUES (?, ?, ?, ?)';
+        const sql = 'INSERT INTO usuarios (nombre, correo, contrasena, rol) VALUES (?, ?, ?, ?)';
         pool.query(sql, [nombre, correo, passwordEncrypt, rol], (err, resultado) => {
             if (err) {
                 console.error('Error al registrar usuario:', err);
@@ -29,18 +29,18 @@ router.post('/registro', async (req, res) => {
         });
 
     } catch (error) {
-        console.error('Error al hashear la contraseña:', error);
+        console.error('Error al hashear la contrasena:', error);
         res.status(500).json({ status: 500, message: 'Error interno del servidor' });
     }
 });
 
 // Ruta para el inicio de sesión
 router.post('/login', async (req, res) => {
-    const { correo, contraseña } = req.body;
+    const { correo, contrasena } = req.body;
 
     // Validación de datos de entrada
-    if (!correo || !contraseña) {
-        return res.status(400).json({ status: 400, message: 'Correo y contraseña son requeridos' });
+    if (!correo || !contrasena) {
+        return res.status(400).json({ status: 400, message: 'Correo y contrasena son requeridos' });
     }
 
     try {
@@ -56,7 +56,7 @@ router.post('/login', async (req, res) => {
             }
 
             const user = resultado[0];
-            const isMatch = await bcrypt.compare(contraseña, user.contraseña);
+            const isMatch = await bcrypt.compare(contrasena, user.contrasena);
 
             if (!isMatch) {
                 return res.status(401).json({ status: 401, message: 'Credenciales inválidas' });
