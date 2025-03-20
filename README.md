@@ -5,9 +5,18 @@ Asignatura: Desarrollo de Aplicaciones Web I
 # Pasos para probar el proyecto.
 
 # Requisios
-* tener instaldo node.js
-* tener instalado MySQL
+* Node.js
+* MySQL workbech
+* Postman 
 
 # Pasos a seguir
 * clonar el repositorio
-* reinstalar dependencias usando npm install
+* reinstalar dependencias usando npm install, tanto en la carpeta server como client respectivamente
+* Levantar sevidor: ubircarse dentro de la carpeta sever, luego ejectuar dede la terminal 
+
+``` bash 
+nodemon app.js
+```
+
+
+
