@@ -19,12 +19,12 @@ router.get('/vehiculos/', authMiddleware, (req, res) => {
 router.post('/vehiculos', authMiddleware, (req, res) => {
     let vehiculo = req.body;
 
-    if (!vehiculo.marca || !vehiculo.modelo || !vehiculo.año || !vehiculo.precio) {
-        return res.status(403).json({ status: 403, message: 'Todos los campos requeridos: marca, modelo, año, precio...' });
+    if (!vehiculo.marca || !vehiculo.modelo || !vehiculo.anio || !vehiculo.precio) {
+        return res.status(403).json({ status: 403, message: 'Todos los campos requeridos: marca, modelo, anio, precio...' });
     }
 
-    const sql = "INSERT INTO vehiculos (marca, modelo, año, precio, disponibilidad, descripcion) VALUES (?, ?, ?, ?, ?, ?)";
-    pool.query(sql, [vehiculo.marca, vehiculo.modelo, vehiculo.año, vehiculo.precio, vehiculo.disponibilidad || true, vehiculo.descripcion || null], (err, results) => {
+    const sql = "INSERT INTO vehiculos (marca, modelo, anio, precio, disponibilidad, descripcion) VALUES (?, ?, ?, ?, ?, ?)";
+    pool.query(sql, [vehiculo.marca, vehiculo.modelo, vehiculo.anio, vehiculo.precio, vehiculo.disponibilidad || true, vehiculo.descripcion || null], (err, results) => {
         if (err) {
             console.log(err);
             return res.status(500).json({ status: 500, message: 'Error al insertar el registro...' });
@@ -38,12 +38,12 @@ router.post('/vehiculos', authMiddleware, (req, res) => {
 router.put('/vehiculos', authMiddleware, (req, res) => {
     let vehiculo = req.body;
 
-    if (!vehiculo.marca || !vehiculo.modelo || !vehiculo.año || !vehiculo.precio || !vehiculo.id_vehiculo) {
-        return res.status(403).json({ status: 403, message: 'Todos los campos requeridos: id_vehiculo, marca, modelo, año, precio...' });
+    if (!vehiculo.marca || !vehiculo.modelo || !vehiculo.anio || !vehiculo.precio || !vehiculo.id_vehiculo) {
+        return res.status(403).json({ status: 403, message: 'Todos los campos requeridos: id_vehiculo, marca, modelo, anio, precio...' });
     }
 
-    const sql = "UPDATE vehiculos SET marca = ?, modelo = ?, año = ?, precio = ?, disponibilidad = ?, descripcion = ? WHERE id_vehiculo = ?";
-    pool.query(sql, [vehiculo.marca, vehiculo.modelo, vehiculo.año, vehiculo.precio, vehiculo.disponibilidad, vehiculo.descripcion, vehiculo.id_vehiculo], (err, results) => {
+    const sql = "UPDATE vehiculos SET marca = ?, modelo = ?, anio = ?, precio = ?, disponibilidad = ?, descripcion = ? WHERE id_vehiculo = ?";
+    pool.query(sql, [vehiculo.marca, vehiculo.modelo, vehiculo.anio, vehiculo.precio, vehiculo.disponibilidad, vehiculo.descripcion, vehiculo.id_vehiculo], (err, results) => {
         if (err) {
             console.log(err);
             return res.status(500).json({ status: 500, message: 'Error al actualizar el registro...' });
