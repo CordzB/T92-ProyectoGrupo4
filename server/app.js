@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const axios = require('axios');
 const cors = require('cors');
+const tipoCambioRoutes = require('./routes/tipoCambio.routes');
 
 require('dotenv').config();
 
@@ -10,6 +11,7 @@ const PORT = process.env.PORT;
 const vehiculoRoutes = require('./routes/vehiculos');
 const authUserRoutes = require('./routes/authUser');
 
+app.use('/tipo-cambio', tipoCambioRoutes);
 app.use(express.json());
 app.use(cors());
 
