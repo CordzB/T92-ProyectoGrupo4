@@ -15,7 +15,7 @@ const authUserRoutes = require('./routes/authUser');
 app.use(express.json());
 app.use(cors());
 
-app.use('/tipo-cambio', tipoCambioRoutes);
+app.use('/api', tipoCambioRoutes);
 app.use('/api', vehiculoRoutes);
 app.use('/api', authUserRoutes);
 
