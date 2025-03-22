@@ -29,23 +29,23 @@ router.post('/registro', async (req, res) => {
         });
 
     } catch (error) {
-        console.error('Error al hashear la contrasena:', error);
+        console.error('Error al hashear la contraseña:', error);
         res.status(500).json({ status: 500, message: 'Error interno del servidor' });
     }
 });
 
 // Ruta para el inicio de sesión
 router.post('/login', async (req, res) => {
-    const { correo, contrasena } = req.body;
+    const { nombre, contrasena } = req.body;
 
     // Validación de datos de entrada
-    if (!correo || !contrasena) {
-        return res.status(400).json({ status: 400, message: 'Correo y contrasena son requeridos' });
+    if (!nombre || !contrasena) {
+        return res.status(400).json({ status: 400, message: 'Nombre de usuario y contraseña son requeridos' });
     }
 
     try {
-        const sql = 'SELECT * FROM usuarios WHERE correo = ?';
-        pool.query(sql, [correo], async (err, resultado) => {
+        const sql = 'SELECT * FROM usuarios WHERE nombre = ?';
+        pool.query(sql, [nombre], async (err, resultado) => {
             if (err) {
                 console.error('Error al buscar usuario:', err);
                 return res.status(500).json({ status: 500, message: 'Error del servidor al buscar usuario' });
@@ -63,7 +63,7 @@ router.post('/login', async (req, res) => {
             }
 
             const token = jwt.sign(
-                { id: user.id_usuario, correo: user.correo, rol: user.rol },
+                { id: user.id_usuario, nombre: user.nombre, rol: user.rol },
                 process.env.SECRET_KEY,
                 { expiresIn: '1h' }
             );
