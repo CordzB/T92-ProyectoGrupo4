@@ -2,25 +2,24 @@ const express = require('express');
 const router = express.Router();
 const { convertirPrecio } = require('../services/tasasCambio');
 
-// Ruta: GET http://localhost:3000/tipo-cambio?precio=5000&moneda=USD&base=HNL
+//siempre convierte de USD → HNL
 router.get('/', async (req, res) => {
-  const { precio, moneda, base } = req.query;
+  const { precio } = req.query;
 
-  // Valida 
-  if (!precio || !moneda) {
-    return res.status(400).json({ error: 'Faltan parámetros: precio o moneda destino' });
+  if (!precio) {
+    return res.status(400).json({ error: 'Falta el parámetro precio' });
   }
 
   try {
     const resultado = await convertirPrecio(
       parseFloat(precio),
-      moneda.toUpperCase(),
-      (base || 'USD').toUpperCase()
+      'HNL',  // moneda Destino
+      'USD'   // moneda Base
     );
 
     res.json({
-      monedaBase: base || 'USD',
-      monedaDestino: moneda,
+      monedaBase: 'USD',
+      monedaDestino: 'HNL',
       tasaCambio: resultado.tasa,
       precioOriginal: precio,
       precioConvertido: resultado.precioConvertido
