@@ -2,8 +2,8 @@
     <h2>Iniciar Sesión</h2>
     <form (ngSubmit)="login()">
         <div>
-            <label for="username">Usuario:</label>
-            <input type="text" id="username" [(ngModel)]="username" name="username" required />
+            <label for="nombre">Usuario:</label>
+            <input type="text" id="nombre" [(ngModel)]="nombre" name="nombre" required />
         </div>
 
         <div>
@@ -17,4 +17,4 @@
 
 <div *ngIf="errorMessage" class="error-message">
     {{ errorMessage }}
-  </div>
+</div>
