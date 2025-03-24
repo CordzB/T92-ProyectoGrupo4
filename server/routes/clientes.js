@@ -5,11 +5,15 @@ const authMiddleware = require('../middleware/authMiddleware')
 
 
 // obtener los datos de los clientes almacenados
-app.get('/api/clientes',authMiddleware, (req, res)=>{
+router.get('/api/clientes',authMiddleware, (req, res)=>{
     const sql ='select * from clientes'
     pool.query(sql, (err, results)=>{
-        if(err){throw err}
-        res.json(results)
+        if(err){
+            res.status(500).json({status:500, message:'no se obtuviero datos'})
+        }else{
+            res.json(results)
+        }
+        
     })
 })
 

@@ -9,12 +9,14 @@ const PORT = process.env.PORT;
 
 const vehiculoRoutes = require('./routes/vehiculos');
 const authUserRoutes = require('./routes/authUser');
+const clientesRoutes = require('./routes/clientes')
 
 app.use(express.json());
 app.use(cors());
 
 app.use('/api', vehiculoRoutes);
 app.use('/api', authUserRoutes);
+app.use('/api', clientesRoutes)
 
 app.get('/api/posts', async (req, res) => {
     try {
@@ -46,3 +48,5 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
+
+
