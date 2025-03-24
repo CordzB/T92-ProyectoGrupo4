@@ -1,19 +1,16 @@
-const pool = require('../config/db');
+const pool = require('../config/db'); // Conecta a BD
 
 const Venta = {
-  // Obtener todas las ventas
   obtenerTodas: (callback) => {
     const sql = 'SELECT * FROM ventas';
     pool.query(sql, callback);
   },
 
-  // Obtener una venta por su ID
   obtenerPorId: (id_venta, callback) => {
     const sql = 'SELECT * FROM ventas WHERE id_venta = ?';
     pool.query(sql, [id_venta], callback);
   },
 
-  // Crear una nueva venta
   crear: (venta, callback) => {
     const impuestos = (venta.precio_final * 0.15).toFixed(2);
     const total = (parseFloat(venta.precio_final) + parseFloat(impuestos)).toFixed(2);
@@ -35,7 +32,6 @@ const Venta = {
     pool.query(sql, values, callback);
   },
 
-  // Actualizar una venta existente
   actualizar: (venta, callback) => {
     const impuestos = (venta.precio_final * 0.15).toFixed(2);
     const total = (parseFloat(venta.precio_final) + parseFloat(impuestos)).toFixed(2);
@@ -59,7 +55,6 @@ const Venta = {
     pool.query(sql, values, callback);
   },
 
-  // Eliminar una venta por ID
   eliminar: (id_venta, callback) => {
     const sql = 'DELETE FROM ventas WHERE id_venta = ?';
     pool.query(sql, [id_venta], callback);
