@@ -10,6 +10,7 @@ const PORT = process.env.PORT;
 const tipoCambioRoutes = require('./routes/tipoCambio.routes');
 const vehiculoRoutes = require('./routes/vehiculos');
 const authUserRoutes = require('./routes/authUser');
+const clientesRoutes = require('./routes/clientes')
 
 
 app.use(express.json());
@@ -18,6 +19,7 @@ app.use(cors());
 app.use('/api', tipoCambioRoutes);
 app.use('/api', vehiculoRoutes);
 app.use('/api', authUserRoutes);
+app.use('/api', clientesRoutes)
 
 
 
@@ -30,3 +32,5 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
+
+
