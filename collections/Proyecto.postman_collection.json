@@ -1,184 +1,353 @@
 {
-	"info": {
-		"_postman_id": "d364bceb-3c8c-4eb1-bfb8-3b48d49782d7",
-		"name": "Proyecto",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "41944649"
-	},
-	"item": [
-		{
-			"name": "Registro",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"admin\",\r\n    \"correo\": \"admin@autolote.com\",\r\n    \"contrasena\": \"123456\",\r\n    \"rol\": \"admin\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/api/registro",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"registro"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Login",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Admin\",\r\n    \"contrasena\": \"123456\"\r\n}\r\n",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/api/login",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"login"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "precio",
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:3000/api/?precio=150",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						""
-					],
-					"query": [
-						{
-							"key": "precio",
-							"value": "150"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "ventas",
-			"request": {
-				"auth": {
-					"type": "bearer",
-					"bearer": [
-						{
-							"key": "token",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tYnJlIjoiQWRtaW4iLCJyb2wiOiJhZG1pbiIsImlhdCI6MTc0Mjg0NzkzOCwiZXhwIjoxNzQyODUxNTM4fQ.vfK-wIz8o3xylYdELA63-lolgAQmZIp8L3CB628g0GA",
-							"type": "string"
-						}
-					]
-				},
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"id_vehiculo\": 1,\r\n    \"id_cliente\": 1,\r\n    \"id_vendedor\": 1,\r\n    \"precio_final\": 25000\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/api/ventas",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"ventas"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Lista Vehiculos",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
-			"request": {
-				"auth": {
-					"type": "noauth"
-				},
-				"method": "GET",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"status\": 200,\r\n    \"message\": \"Success\",\r\n    \"results\": [\r\n        {\r\n            \"codigo\": 1,\r\n            \"marca\": \"Toyota\",\r\n            \"modelo\": \"Corolla\",\r\n            \"anio\": 2020\r\n        }\r\n    ]\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "http://localhost:3000/api/vehiculos/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"vehiculos",
-						""
-					]
-				}
-			},
-			"response": []
-		}
-	]
+    "info": {
+        "name": "T92 Autolote API - Full CRUD",
+        "_postman_id": "autogenerado-id",
+        "description": "Colecci\u00f3n Postman completa para probar login, tipo de cambio, ventas, veh\u00edculos y clientes (CRUD) protegidos con token.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "1 - Registro de usuario",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"nombre\": \"adminnuevo\",\n    \"correo\": \"adminnuevo@autolote.com\",\n    \"contrasena\": \"admin123\",\n    \"rol\": \"admin\"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:3000/api/registro",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000",
+                    "path": [
+                        "api",
+                        "registro"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "2 - Login de usuario",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"nombre\": \"adminnuevo\",\n    \"contrasena\": \"admin123\"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:3000/api/login",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000",
+                    "path": [
+                        "api",
+                        "login"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Tipo de cambio",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                    }
+                ],
+                "url": {
+                    "raw": "http://localhost:3000/api/tipo-cambio?precio=15000",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000",
+                    "path": [
+                        "api",
+                        "tipo-cambio"
+                    ],
+                    "query": [
+                        {
+                            "key": "precio",
+                            "value": "15000"
+                        }
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Ventas - Obtener todas",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                    }
+                ],
+                "url": {
+                    "raw": "http://localhost:3000/api/ventas",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000",
+                    "path": [
+                        "api",
+                        "ventas"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Ventas - Crear",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id_vehiculo\": 1,\n    \"id_cliente\": 1,\n    \"id_vendedor\": 1,\n    \"precio_final\": 10000,\n    \"impuestos\": 1500,\n    \"total\": 11500\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:3000/api/ventas",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000",
+                    "path": [
+                        "api",
+                        "ventas"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Ventas - Actualizar",
+            "request": {
+                "method": "PUT",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id_venta\": 1,\n    \"id_vehiculo\": 1,\n    \"id_cliente\": 1,\n    \"id_vendedor\": 1,\n    \"precio_final\": 11000,\n    \"impuestos\": 1600,\n    \"total\": 12600\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:3000/api/ventas",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000",
+                    "path": [
+                        "api",
+                        "ventas"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Ventas - Eliminar",
+            "request": {
+                "method": "DELETE",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                    }
+                ],
+                "url": {
+                    "raw": "http://localhost:3000/api/ventas/1",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000",
+                    "path": [
+                        "api",
+                        "ventas",
+                        "1"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Veh\u00edculos - Obtener todos",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                    }
+                ],
+                "url": {
+                    "raw": "http://localhost:3000/api/vehiculos/",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000",
+                    "path": [
+                        "api",
+                        "vehiculos",
+                        ""
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Clientes - Obtener todos",
+            "request": {
+                "method": "GET",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                    }
+                ],
+                "url": {
+                    "raw": "http://localhost:3000/api/clientes",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000",
+                    "path": [
+                        "api",
+                        "clientes"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Clientes - Crear",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"nombre\": \"Carlos L\\u00f3pez\",\n    \"correo\": \"carlos@autolote.com\",\n    \"telefono\": \"99887766\"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:3000/api/clientes",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000",
+                    "path": [
+                        "api",
+                        "clientes"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Clientes - Eliminar",
+            "request": {
+                "method": "DELETE",
+                "header": [
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                    }
+                ],
+                "url": {
+                    "raw": "http://localhost:3000/api/clientes/1",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000",
+                    "path": [
+                        "api",
+                        "clientes",
+                        "1"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Clientes - Actualizar",
+            "request": {
+                "method": "PUT",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    },
+                    {
+                        "key": "Authorization",
+                        "value": "Bearer {{token}}"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"id_cliente\": 1,\n    \"nombre\": \"Carlos Actualizado\",\n    \"correo\": \"carlosactualizado@autolote.com\",\n    \"telefono\": \"99887766\"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:3000/api/clientes",
+                    "protocol": "http",
+                    "host": [
+                        "localhost"
+                    ],
+                    "port": "3000",
+                    "path": [
+                        "api",
+                        "clientes"
+                    ]
+                }
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "token",
+            "value": ""
+        }
+    ]
 }
