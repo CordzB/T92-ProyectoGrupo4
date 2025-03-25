@@ -97,4 +97,43 @@ router.delete('/vehiculos/:id_vehiculo', authMiddleware, (req, res) => {
     });
 });
 
+// Filtrar vehículos por marca, modelo, precio y disponibilidad
+router.get('/vehiculos/filtrar', authMiddleware, (req, res) => {
+    let { marca, modelo, precio_min, precio_max, disponibilidad } = req.query;
+    
+    let sql = "SELECT * FROM vehiculos WHERE 1=1"; // 1=1 permite agregar condiciones dinámicamente
+    let params = [];
+
+    if (marca) {
+        sql += " AND marca LIKE ?";
+        params.push(`%${marca}%`);
+    }
+    if (modelo) {
+        sql += " AND modelo LIKE ?";
+        params.push(`%${modelo}%`);
+    }
+    if (precio_min) {
+        sql += " AND precio >= ?";
+        params.push(precio_min);
+    }
+    if (precio_max) {
+        sql += " AND precio <= ?";
+        params.push(precio_max);
+    }
+    if (disponibilidad !== undefined) {
+        sql += " AND disponibilidad = ?";
+        params.push(disponibilidad);
+    }
+
+    pool.query(sql, params, (err, results) => {
+        if (err) {
+            console.log(err);
+            return res.status(500).json({ status: 500, message: 'Error en la consulta...' });
+        }
+
+        res.status(200).json({ status: 200, message: 'Success', results });
+    });
+});
+
+
 module.exports = router;
