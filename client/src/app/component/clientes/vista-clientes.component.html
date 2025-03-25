@@ -1,27 +1,83 @@
-<div class="container">
+<div class="container mt-4">
     <h1>Clientes</h1>
-    <table>
-        <thead>
-         <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Correo</th>
-            <th>Telefono</th>
-            <th>Fecha de registro</th>
-         </tr>
-        </thead>
-    <tbody>
-        <tr *ngFor="let cliente of clientes">
-            <td>{{ cliente.id }}</td>
-            <td>{{ cliente.nombre }}</td>
-            <td>{{ cliente.correo }}</td>
-            <td>{{ cliente.telefono }}</td>
-            <td>{{ cliente.fecha_registro }}</td>
-        </tr>
-    </tbody>
-    </table>
-    <p *ngIf="clientes.length === 0">clientes disponibles</p>
-    <div *ngIf="errorMessage" class="error-message">
-        {{ errorMessage }}
+    <!-- Botón para abrir el modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crudModal">
+      Agregar cliente
+    </button>
+  
+    <!-- Modal -->
+    <div class="modal fade" id="crudModal" tabindex="-1" aria-labelledby="crudModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="crudModalLabel">
+              {{ nuevoCliente.id_cliente ? 'Editar Cliente' : 'Crear Cliente' }}
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" [(ngModel)]="nuevoCliente.nombre" name="nombre">
+              </div>
+              <div class="mb-3">
+                <label for="correo" class="form-label">Correo</label>
+                <input type="email" class="form-control" id="correo" [(ngModel)]="nuevoCliente.correo" name="correo">
+              </div>
+              <div class="mb-3">
+                <label for="telefono" class="form-label">Teléfono</label>
+                <input type="text" class="form-control" id="telefono" [(ngModel)]="nuevoCliente.telefono" name="telefono">
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" (click)="agregarCliente()">
+              {{ nuevoCliente.id_cliente ? 'Actualizar' : 'Crear' }}
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-</div>
+  
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Correo</th>
+          <th>Teléfono</th>
+          <th>Fecha de registro</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cliente of clientes">
+          <td>{{ cliente.id_cliente }}</td>
+          <td>{{ cliente.nombre }}</td>
+          <td>{{ cliente.correo }}</td>
+          <td>{{ cliente.telefono }}</td>
+          <td>{{ cliente.fecha_registro }}</td>
+          <td>
+            <div class="d-grid gap-2 d-md-block">
+              <!-- Botón de editar -->
+              <button type="button" class="btn btn-warning btn-sm me-2" data-bs-toggle="modal" 
+              data-bs-target="#crudModal"
+             (click)="editarCliente(cliente)">
+                <i class="bi bi-pencil-fill"></i>
+              </button>
+              <!-- Botón de eliminar -->
+              <button type="button" class="btn btn-danger btn-sm" (click)="eliminarCliente(cliente.id_cliente)">
+                <i class="bi bi-trash-fill"></i>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p *ngIf="clientes.length === 0">No hay clientes disponibles</p>
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  </div>

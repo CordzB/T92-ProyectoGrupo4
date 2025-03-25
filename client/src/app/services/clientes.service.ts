@@ -20,14 +20,26 @@ export class ClientesService {
   }
 
   addCliente(cliente:any){
-    return this.http.post(this.apiUrl, cliente)
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+        Authorization: `Bearer ${token}`
+    });
+    return this.http.post(this.apiUrl+'/clientes', cliente, { headers })
   }
 
   updateCliente(id:number, cliente:any){
-    return this.http.put(`${this.apiUrl}/${id}`, cliente)
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+        Authorization: `Bearer ${token}`
+    });
+    return this.http.put(`${this.apiUrl+'/clientes'}/${id}`, cliente,{ headers })
   }
 
   deleteCliente(id:number){
-    return this.http.delete(`${this.apiUrl}/${id}`)
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+        Authorization: `Bearer ${token}`
+    });
+    return this.http.delete(`${this.apiUrl+'/clientes'}/${id}`, { headers })
   }
 }
