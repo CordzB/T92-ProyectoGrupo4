@@ -1,9 +1,10 @@
+const authMiddleware = require('../middleware/authMiddleware');
 const express = require('express');
 const router = express.Router();
 const { convertirPrecio } = require('../services/tasasCambio');
 
-//siempre convierte de USD → HNL
-router.get('/', async (req, res) => {
+//siempre convierte de USD a HNL
+router.get('/tipo-cambio', authMiddleware, async (req, res) => {
   const { precio } = req.query;
 
   if (!precio) {
