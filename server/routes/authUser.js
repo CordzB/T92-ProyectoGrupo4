@@ -3,8 +3,11 @@ const jwt = require('jsonwebtoken');
 const pool = require('../config/db');
 const router = express.Router();
 const bcrypt = require('bcrypt');
+const authMiddleware = require('../middleware/authMiddleware');
 
 require('dotenv').config();
+
+
 
 // Ruta para el registro de usuarios
 router.post('/registro', async (req, res) => {
