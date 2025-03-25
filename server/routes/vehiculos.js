@@ -97,4 +97,6 @@ router.delete('/vehiculos/:id_vehiculo', authMiddleware, (req, res) => {
     });
 });
 
+// Filtrar vehículos por marca, modelo, precio y disponibilidad
+
 module.exports = router;
