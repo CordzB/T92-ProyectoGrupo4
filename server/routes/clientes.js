@@ -5,7 +5,7 @@ const authMiddleware = require('../middleware/authMiddleware')
 
 
 // obtener los datos de los clientes almacenados
-router.get('/api/clientes',authMiddleware, (req, res)=>{
+router.get('/clientes',authMiddleware, (req, res)=>{
     const sql ='select * from clientes'
     pool.query(sql, (err, results)=>{
         if(err){
@@ -18,14 +18,14 @@ router.get('/api/clientes',authMiddleware, (req, res)=>{
 })
 
 // Filtar cliente por id
-router.get('/api/clientes/:id_cliente', authMiddleware, (req, res) => {
+router.get('/clientes/:id_cliente', authMiddleware, (req, res) => {
     const {id_cliente}= req.params;
-    if (!id_vehiculo) {
-        return res.status(403).json({ status: 403, message: 'El id_vehiculo es un parámetro requerido...' });
+    if (!id_cliente) {
+        return res.status(403).json({ status: 403, message: 'El id_cliente es un parámetro requerido...' });
     }
 
-    const sql = "SELECT * FROM vehiculos WHERE id_vehiculo = ?";
-    pool.query(sql, [id_vehiculo], (err, results) => {
+    const sql = "SELECT * FROM clientes WHERE id_cliente = ?";
+    pool.query(sql, [id_cliente], (err, results) => {
         if (err) {
             console.log(err);
             return res.status(500).json({ status: 500, message: 'Error al obtener el registro...' });
@@ -35,7 +35,7 @@ router.get('/api/clientes/:id_cliente', authMiddleware, (req, res) => {
     });
 });
 // crear un nuevo cliente
-router.post('/api/clientes',authMiddleware, (req,res)=>{
+router.post('/clientes',authMiddleware, (req,res)=>{
     const {nombre, correo, telefono } = req.body
         if(!nombre || !correo || !telefono){
           return res.status(400).json({status:400, message: 'Todos los campos son obligatorios'})
@@ -56,7 +56,7 @@ router.post('/api/clientes',authMiddleware, (req,res)=>{
 })
 
 // actualizar cliente por id
-router.put('/api/clientes/:id_cliente',authMiddleware, (req, res)=>{
+router.put('/clientes/:id_cliente',authMiddleware, (req, res)=>{
     const {id_cliente} = req.params
     const {nombre, correo, telefono}= req.body
 
@@ -66,7 +66,7 @@ router.put('/api/clientes/:id_cliente',authMiddleware, (req, res)=>{
 
       const sql = 'update clientes set nombre = ?, correo = ?, telefono = ? where id_cliente = ? '
 
-      pool. query(sql, [nombre, correo, telefono], (err, results)=>{
+      pool. query(sql, [nombre, correo, telefono, id_cliente], (err, results)=>{
             if(err){
                return res.status(500).json({status:500, message:'Error al actualizar cliente'})
             }
@@ -80,7 +80,7 @@ router.put('/api/clientes/:id_cliente',authMiddleware, (req, res)=>{
 })
 
 // Eliminar cliente por id
-router.delete('/api/routers/:id_cliente',authMiddleware, (req, res)=>{
+router.delete('/clientes/:id_cliente',authMiddleware, (req, res)=>{
     const {id_cliente} = req.params
 
     const sql = 'delete from clientes where id_cliente = ?'
