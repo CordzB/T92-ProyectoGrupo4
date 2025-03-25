@@ -10,6 +10,7 @@ const PORT = process.env.PORT;
 const tipoCambioRoutes = require('./routes/tipoCambio.routes');
 const vehiculoRoutes = require('./routes/vehiculos');
 const authUserRoutes = require('./routes/authUser');
+const ventasRoutes = require('./routes/ventas.routes');
 const clientesRoutes = require('./routes/clientes')
 
 
@@ -19,6 +20,7 @@ app.use(cors());
 app.use('/api', tipoCambioRoutes);
 app.use('/api', vehiculoRoutes);
 app.use('/api', authUserRoutes);
+app.use('/api', ventasRoutes);
 app.use('/api', clientesRoutes)
 
 
