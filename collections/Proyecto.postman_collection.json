@@ -22,7 +22,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"nombre\": \"Admin\",\r\n    \"correo\": \"admin@autolote.com\",\r\n    \"contraseña\": \"123456\",\r\n    \"rol\": \"admin\"\r\n}",
+					"raw": "{\r\n    \"nombre\": \"admin\",\r\n    \"correo\": \"admin@autolote.com\",\r\n    \"contrasena\": \"123456\",\r\n    \"rol\": \"admin\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -52,6 +52,15 @@
 				},
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Admin\",\r\n    \"contrasena\": \"123456\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
 					"raw": "http://localhost:3000/api/login",
 					"protocol": "http",
@@ -62,6 +71,110 @@
 					"path": [
 						"api",
 						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "precio",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/?precio=150",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						""
+					],
+					"query": [
+						{
+							"key": "precio",
+							"value": "150"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ventas",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tYnJlIjoiQWRtaW4iLCJyb2wiOiJhZG1pbiIsImlhdCI6MTc0Mjg0NzkzOCwiZXhwIjoxNzQyODUxNTM4fQ.vfK-wIz8o3xylYdELA63-lolgAQmZIp8L3CB628g0GA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id_vehiculo\": 1,\r\n    \"id_cliente\": 1,\r\n    \"id_vendedor\": 1,\r\n    \"precio_final\": 25000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/ventas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"ventas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Lista Vehiculos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"status\": 200,\r\n    \"message\": \"Success\",\r\n    \"results\": [\r\n        {\r\n            \"codigo\": 1,\r\n            \"marca\": \"Toyota\",\r\n            \"modelo\": \"Corolla\",\r\n            \"anio\": 2020\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/api/vehiculos/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"vehiculos",
+						""
 					]
 				}
 			},
