@@ -48,15 +48,16 @@ Caso contrario, puede referirse a esta guía sobre la correcta instalación del 
 # Conexión del proyecto a la base de datos
 en la carpeta server, se encuentra un archivo. env, dicho archivo contiene el nombre y contraseña del servidor de base de datos, de manera predeterminada en este proyecto tanto usuario como contraseña se han configurado como root, recuerde modificarlos para que coincidan con su instalación local de base de datos:
 
-DB_HOST=localhost
-DB_USER=root // cambie por su nombre de usuario
-DB_PASSWORD=root // cambie por su contraseña de mysql
-PORT=3000
-DB_NAME=autolotedb // nombre de la base de datos provista en el script de creación provisto dentro del repositorio (ver archivo AutoloteDB.sql) 
+* DB_HOST=localhost
+* DB_USER=root // cambie por su nombre de usuario
+* DB_PASSWORD=root // cambie por su contraseña de mysql
+* PORT=3000
+* DB_NAME=autolotedb // nombre de la base de datos provista en el script de creación provisto dentro del repositorio (ver archivo AutoloteDB.sql) 
 
 
 # Pasos a seguir
 * clonar el repositorio
+* utilzar el archivo AutoloteDB.sql para crear la base de datos en MySql
 * abrir el proyecto con VS Code
 * reinstalar dependencias usando npm install, este proyecto esta divido en 2 carpetas principales: client para el frontend y server para backend, en la carpeta server como client respectivamente, se recomienda abrir dos terminales para ejecutar los scripts necesarios para cada uno
 # Backend
