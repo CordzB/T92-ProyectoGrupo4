@@ -98,4 +98,4 @@ Ya esta listo para probar el proyecto, como paso final, abra Postman e importe l
 las API de este proyecto están protegidas por autenticación, por lo que deberá primer crear un usuario usando la api de registro de usuario, y posteriormente iniciar sesión con dicho usuario para poder obtener el token, dicho token debe ser copiado y pegado en la sección de Auth Type > bearer Token, así podrá probar las Apis sin restricciones. 
 
 ![token](img/token.png)
-Recurde al final detener los servicios tanto del client como server usando CTL+C en la terminal de ambos. 
+Recurde al final detener los servicios tanto del client como server usando Ctrl+C en la terminal de ambos. 
