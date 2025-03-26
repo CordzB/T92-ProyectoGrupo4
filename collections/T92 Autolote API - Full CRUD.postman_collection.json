@@ -170,31 +170,6 @@
 			"response": []
 		},
 		{
-			"name": "Ventas - Obtener todas",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Authorization",
-						"value": "Bearer {{token}}"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:3000/api/ventas",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "3000",
-					"path": [
-						"api",
-						"ventas"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "Vehículos - Obtener por ID",
 			"protocolProfileBehavior": {
 				"disableBodyPruning": true
@@ -232,6 +207,31 @@
 						"api",
 						"vehiculos",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Ventas - Obtener todas",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/api/ventas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"ventas"
 					]
 				}
 			},
