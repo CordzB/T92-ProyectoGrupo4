@@ -1,0 +1,26 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th>Código</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Año</th>
+        <th>Precio</th>
+        <th>Disponibilidad</th>
+        <th>Descripción</th>
+        <th>Fecha Publicación</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let vehiculo of vehiculos">
+        <td>{{ vehiculo.id_vehiculo }}</td>
+        <td>{{ vehiculo.marca }}</td>
+        <td>{{ vehiculo.modelo }}</td>
+        <td>{{ vehiculo.anio }}</td>
+        <td>{{ vehiculo.precio | currency:'USD' }}</td>
+        <td>{{ vehiculo.disponibilidad ? 'Disponible' : 'No Disponible' }}</td>
+        <td>{{ vehiculo.descripcion }}</td>
+        <td>{{ vehiculo.fecha_publicacion | date }}</td>
+      </tr>
+    </tbody>
+  </table>

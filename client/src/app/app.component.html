@@ -1,0 +1,15 @@
+<header *ngIf="isLoggedIn()">
+    <nav>
+        <ul>
+            <li><a routerLink="/home">Inicio</a></li>
+            <li><a routerLink="/users">Usuarios</a></li>
+            <li><a routerLink="/vehiculos">Vehiculos</a></li>
+            <li><a routerLink="/clientes">Clientes</a></li>
+            <li><a (click)="logout()">Cerrar Sesión</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main>
+    <router-outlet></router-outlet>
+</main>
