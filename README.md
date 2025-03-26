@@ -28,12 +28,12 @@ Node.js
 ``` bash 
 node -v
 ```
-Node.js
+NPM (parte de Node.js)
 ``` bash 
 npm -v
 ```
 
-Node.js
+Angular
 ``` bash 
 ng version
 ```
