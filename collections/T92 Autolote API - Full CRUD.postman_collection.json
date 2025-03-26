@@ -507,6 +507,84 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Consultas - Realizar Consulta",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/consultas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"consultas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultas - Ver todas las consultas",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/consultas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"consultas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Consultas - por  ID de cliente",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tYnJlIjoiYWRtaW4iLCJyb2wiOiJhZG1pbiIsImlhdCI6MTc0MzAyMTcxMSwiZXhwIjoxNzQzMDI1MzExfQ.klRpTQFB_aeDWDbGXt1l9cJtE5hrR6QISbIjl9ynK-w",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/consultas/cliente/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"consultas",
+						"cliente",
+						"1"
+					]
+				}
+			},
+			"response": []
 		}
 	],
 	"variable": [

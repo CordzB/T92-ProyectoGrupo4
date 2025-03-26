@@ -12,6 +12,7 @@ const vehiculoRoutes = require('./routes/vehiculos');
 const authUserRoutes = require('./routes/authUser');
 const ventasRoutes = require('./routes/ventas.routes');
 const clientesRoutes = require('./routes/clientes')
+const consultasRoutes = require('./routes/consultas');
 
 
 app.use(express.json());
@@ -22,6 +23,8 @@ app.use('/api', vehiculoRoutes);
 app.use('/api', authUserRoutes);
 app.use('/api', ventasRoutes);
 app.use('/api', clientesRoutes)
+app.use('/api', consultasRoutes);
+
 
 
 
