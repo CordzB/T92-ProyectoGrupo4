@@ -238,6 +238,37 @@
 			"response": []
 		},
 		{
+			"name": "Vehiculos - Borrar por ID",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tYnJlIjoiYWRtaW4iLCJyb2wiOiJhZG1pbiIsImlhdCI6MTc0Mjk2MzMyNSwiZXhwIjoxNzQyOTY2OTI1fQ.lOe_YqeouQp1NYjCdQztqqCHXeTXPe4L-HXNwRNWmBs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/api/vehiculos/6",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"vehiculos",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "Ventas - Crear",
 			"request": {
 				"method": "POST",
